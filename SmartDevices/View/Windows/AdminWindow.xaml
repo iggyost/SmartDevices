@@ -1,0 +1,120 @@
+﻿<Window x:Class="SmartDevices.View.Windows.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartDevices.View.Windows"
+        mc:Ignorable="d"
+        MinHeight="720" MinWidth="1280"
+        Height="1080" Width="1920"
+        WindowState="Maximized"
+        ResizeMode="CanResize"
+        Background="#FF131313">
+    <Grid Margin="32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Left">
+            <TextBlock Style="{StaticResource headerTextStyle}"
+                       HorizontalAlignment="Left">Список сотрудников</TextBlock>
+            <Button Margin="64 0 16 0"
+                    Name="addUserBtn" Click="addUserBtn_Click">Добавить</Button>
+            <Button Margin="0 0 16 0"
+                    Name="editUserBtn" Click="editUserBtn_Click">Редактировать</Button>
+            <Button Name="removeUserBtn" Click="removeUserBtn_Click">Удалить</Button>
+        </StackPanel>
+        <Button Margin="16 0"
+                Padding="24 6"
+                HorizontalAlignment="Right"
+                Name="exitBtn" 
+                Click="exitBtn_Click">Выйти</Button>
+        <ListBox Background="#FF1B1B1B"
+                 Grid.Row="1"
+                 Margin="0 16"
+                 Name="EmployeesLb"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 VirtualizingPanel.ScrollUnit="Pixel">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Grid.Row="2" 
+                            Width="1760"
+                            Background="#FF333232"
+                            Height="100"
+                            Margin="32 8"
+                            CornerRadius="16">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Style="{StaticResource mediumTextStyle}">Имя</TextBlock>
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="1">Логин</TextBlock>
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="2">Пароль</TextBlock>
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="3">Добавление</TextBlock>
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="4">Редактирование</TextBlock>
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="5">Удаление</TextBlock>
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="6">Администратор</TextBlock>
+
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Row="1"
+                           Text="{Binding name}"></TextBlock>
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding login}"></TextBlock>
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Row="1"
+                           Grid.Column="2"
+                           Text="{Binding password}"></TextBlock>
+                            <CheckBox Grid.Row="1" Tag="{Binding id}"
+                          Grid.Column="3"
+                          Style="{StaticResource CheckBoxStyle1}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Name="canAddCb" Loaded="canAddCb_Loaded" Click="canAddCb_Click"></CheckBox>
+                            <CheckBox Grid.Row="1" Tag="{Binding id}"
+                          Grid.Column="4"
+                          Style="{StaticResource CheckBoxStyle1}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Name="canEditCb" Loaded="canEditCb_Loaded" Click="canEditCb_Click"></CheckBox>
+                            <CheckBox Grid.Row="1" Tag="{Binding id}"
+                          Grid.Column="5"
+                          Style="{StaticResource CheckBoxStyle1}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Name="canDeleteCb" Loaded="canDeleteCb_Loaded" Click="canDeleteCb_Click"></CheckBox>
+                            <CheckBox Grid.Row="1" Tag="{Binding id}"
+                          Grid.Column="6"
+                          Style="{StaticResource CheckBoxStyle1}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Name="isAdminCb" Click="isAdminCb_Click" Loaded="isAdminCb_Loaded">
+                            </CheckBox>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Window>

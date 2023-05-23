@@ -1,0 +1,144 @@
+﻿<Window x:Class="SmartDevices.View.Windows.AddEditUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartDevices.View.Windows"
+        mc:Ignorable="d"
+        Height="900" Width="1600"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Border Background="#FF131313"
+            CornerRadius="32"
+            BorderBrush="#30131313"
+            BorderThickness="4">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="31" Direction="0"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Background="#FF416B61"
+                    CornerRadius="32 32 0 0">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource mediumTextStyle}"
+                           Name="titleTb">Добавление пользователя</TextBlock>
+            </Border>
+
+            <Grid Grid.Row="1"
+                  Margin="16">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Background="#FF333232"
+                Height="100"
+                Margin="32 8"
+                CornerRadius="16">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{StaticResource mediumTextStyle}">Имя</TextBlock>
+                        <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="1">Логин</TextBlock>
+                        <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="2">Пароль</TextBlock>
+
+                        <TextBox Style="{StaticResource defaultTbStyle}" Margin="24 8"
+                                 Grid.Row="1"
+                                 Name="userNameTb"
+                                 Text="{Binding name}"></TextBox>
+                        <TextBox Style="{StaticResource defaultTbStyle}" Margin="24 8"
+                                 Grid.Row="1"
+                                 Grid.Column="1"
+                                 Name="userLoginTb"
+                                 Text="{Binding login}"></TextBox>
+                        <TextBox Style="{StaticResource defaultTbStyle}" Margin="24 8"
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 Name="userPasswordTb"
+                                 Text="{Binding password}"></TextBox>
+                    </Grid>
+                </Border>
+                <Border Background="#FF333232" Grid.Row="1"
+                Height="100"
+                Margin="32 8"
+                CornerRadius="16">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{StaticResource mediumTextStyle}">Добавление</TextBlock>
+                        <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="1">Редактирование</TextBlock>
+                        <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="2">Удаление</TextBlock>
+                        <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Column="3">Администратор</TextBlock>
+                        <CheckBox Grid.Row="1" Tag="{Binding id}"
+                          Style="{StaticResource CheckBoxStyle1}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Name="canAddCb"></CheckBox>
+                        <CheckBox Grid.Row="1" Tag="{Binding id}"
+                          Grid.Column="1"
+                          Style="{StaticResource CheckBoxStyle1}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Name="canEditCb"></CheckBox>
+                        <CheckBox Grid.Row="1" Tag="{Binding id}"
+                          Grid.Column="2"
+                          Style="{StaticResource CheckBoxStyle1}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Name="canDeleteCb"></CheckBox>
+                        <CheckBox Grid.Row="1" Tag="{Binding id}"
+                          Grid.Column="3"
+                          Style="{StaticResource CheckBoxStyle1}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Name="isAdminCb">
+                        </CheckBox>
+                    </Grid>
+                </Border>
+            </Grid>
+            
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="32"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Name="cancelBtn"
+                        VerticalAlignment="Top" Click="cancelBtn_Click">Отмена</Button>
+                <Button Grid.Column="2"
+                        Name="okBtn"
+                        VerticalAlignment="Top" Click="okBtn_Click">Принять</Button>
+                <Button Grid.Column="2"
+                        Name="editBtn"
+                        VerticalAlignment="Top"
+                        Visibility="Collapsed" Click="editBtn_Click">Изменить</Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
